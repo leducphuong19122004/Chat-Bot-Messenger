@@ -2,9 +2,9 @@
     "version": 2,
     "name": "chat-bot-messenger",
     "builds": [
-       { "src": "./server.js", "use": "@vercel/node" }
+       { "src": "index.js", "use": "@vercel/node" }
     ],
     "routes": [
-       { "src": "/(.*)", "dest": "/" }
+       { "src": "/(.*)", "dest": "index.js" }
     ]
  }
