@@ -1,7 +1,6 @@
 import express from 'express';
-import { getWebhook } from '../controllers/getWebhook.js';
-import { postWebhook } from '../controllers/postWebhook.js';
-import { getHomePage } from '../controllers/getHomePage.js';
+import { getHomePage, getWebhook, postWebhook } from '../controllers/homeController.js';
+
 
 let router = express.Router();
 const initRoute = (app) =>{
