@@ -1,3 +1,3 @@
 export let getHomePage = (req, res) => {
-    res.render('homePage.ejs');
+    res.send("SERVER ON");
 }
