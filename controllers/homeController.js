@@ -58,6 +58,23 @@ export let postWebhook = (req, res) => {
   }
 }
 
+export let settingGetstartedButton = (req, res) => {
+    let request_body = {
+        "get_started": {"payload": "Bắt Đầu"}
+    }
+    request({
+        "uri": `https://graph.facebook.com/v2.6/me/messenger_profile?access_token=${process.env.ACCESS_TOKEN}`,
+        "qs": { "access_token": process.env.ACCESS_TOKEN },
+        "method": "POST",
+        "json": request_body
+    }, (err, res, body) => {
+        if (!err) {
+            res.send("setting successfully !")
+        } else {
+            console.error("Unable to send message:" + err);
+        }
+    }); 
+}
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
   let response;
