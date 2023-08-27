@@ -91,53 +91,57 @@ function handleMessage(sender_psid, received_message) {
     // Gets the URL of the message attachment
     let attachment_url = received_message.attachments[0].payload.url;
     response = {
-        "attachment": {
-          "type": "template",
-          "payload": {
-            "template_type": "generic",
-            "elements": [{
-              "title": "Is this the right picture?",
-              "subtitle": "Tap a button to answer.",
-              "image_url": attachment_url,
-              "buttons": [
-                {
-                  "type": "postback",
-                  "title": "Yes!",
-                  "payload": "yes",
-                },
-                {
-                  "type": "postback",
-                  "title": "No!",
-                  "payload": "no",
-                }
-              ],
-            }]
-          }
         }
     }
+    // Sends the response message
+    callSendAPI(sender_psid, response); 
   } 
-  // Sends the response message
-  callSendAPI(sender_psid, response); 
-}
+
 
 // Handles messaging_postbacks events
-function handlePostback(sender_psid, received_postback) {
-    let response;
+async function handlePostback(sender_psid, received_postback) {
     // Get the payload for the postback
     let payload = received_postback.payload;
     // Set the response based on the postback payload
-    if (payload === 'Get Started') {
-        response = {"text": "Auth Perfume Shop xin chào quý khách !"}
-    }else if (payload === 'Bắt Đầu') {
-        response = {"text": "Auth Perfume Shop xin chào quý khách !"}
-    }else if (payload === 'yes') {
-      response = { "text": "Thanks!" }
-    } else if (payload === 'no') {
-      response = { "text": "Oops, try sending another image." }
+    if (payload === 'Bắt Đầu') {
+        let response_1 = {"text": "Auth Perfume Shop xin chào quý khách !"};
+        await callSendAPI(sender_psid, response_1);
+
+        let response_2 = {
+            "attachment":{
+                "type":"template",
+                "payload":{
+                "template_type":"generic",
+                "elements":[
+                    {
+                    "title":"Welcome!",
+                    "image_url":"https://raw.githubusercontent.com/fbsamples/original-coast-clothing/main/public/styles/male-work.jpg",
+                    "subtitle":"We have the right hat for everyone.",
+                    "default_action": {
+                        "type": "web_url",
+                        "url": "https://www.originalcoastclothing.com/",
+                        "webview_height_ratio": "tall"
+                    },
+                    "buttons":[
+                        {
+                        "type":"web_url",
+                        "url":"https://www.originalcoastclothing.com/",
+                        "title":"View Website"
+                        },{
+                        "type":"postback",
+                        "title":"Start Chatting",
+                        "payload":"DEVELOPER_DEFINED_PAYLOAD"
+                        }              
+                    ]      
+                    }
+                ]
+                }
+            }
+        }
+        await callSendAPI(sender_psid, response_2);
     }
     // Send the message to acknowledge the postback
-    callSendAPI(sender_psid, response);
-}
+};
 
 // Sends response messages via the Send API
 function callSendAPI(sender_psid, response) {
