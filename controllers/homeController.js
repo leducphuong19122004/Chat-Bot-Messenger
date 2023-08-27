@@ -71,11 +71,13 @@ export let settingGetstartedButton = async(req, res) => {
     }, (err, res, body) => {
         console.log(body);
         if (!err) {
-            res.send("setting successfully !");
+            console.log("setting successfully !!");
         } else {
             console.error("Unable to send message:" + err);
         }
     }); 
+    // Send the response after the webhook request is resolved
+    res.status(200).send("setting successfully !!!");
 }
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
