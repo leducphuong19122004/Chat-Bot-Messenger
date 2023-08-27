@@ -5,7 +5,7 @@ import { getHomePage, getWebhook, postWebhook, settingGetstartedButton } from '.
 let router = express.Router();
 const initRoute = (app) =>{
     router.get('/', getHomePage);
-    router.get('/hello', settingGetstartedButton);
+    router.get('/setup-profile', settingGetstartedButton);
     router.post('/webhook', postWebhook );
     router.get("/webhook", getWebhook);
     return app.use('/', router);

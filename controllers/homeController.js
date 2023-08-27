@@ -1,5 +1,6 @@
 import request from 'request';
 import dotenv from 'dotenv';
+import axios from 'axios';
 dotenv.config();
 
 export let getWebhook = (req, res) => {
@@ -59,25 +60,24 @@ export let postWebhook = (req, res) => {
 }
 
 export let settingGetstartedButton = async(req, res) => {
-    let request_body = {
-        "get_started": {"payload": "Bắt Đầu"},
-        "whitelisted_domains": ["https://chat-bot-messenger.vercel.app/"]
-    }
-    request({
-        "uri": `https://graph.facebook.com/v17.0/me/messenger_profile?access_token=${process.env.ACCESS_TOKEN}`,
-        "qs": { "access_token": process.env.ACCESS_TOKEN },
-        "method": "POST",
-        "json": request_body
-    }, (err, res, body) => {
-        console.log(body);
-        if (!err) {
-            console.log("setting successfully !!");
-        } else {
-            console.error("Unable to send message:" + err);
-        }
-    }); 
-    // Send the response after the webhook request is resolved
-    res.status(200).send("setting successfully !!!");
+    try {
+        const pageAccessToken = process.env.ACCESS_TOKEN; // Replace with your actual Page Access Token
+        
+        const request_body = {
+          get_started: { payload: 'Get Started' }
+        };
+        
+        const response = await axios.post(
+          `https://graph.facebook.com/v17.0/me/messenger_profile?access_token=${pageAccessToken}`,
+          request_body
+        );
+        
+        console.log(response.data);
+        res.status(200).send('Get Started Button Set Up Successfully');
+      } catch (error) {
+        console.error('Error setting up Get Started button:', error);
+        res.status(500).send('Internal Server Error');
+      }
 }
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
