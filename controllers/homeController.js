@@ -128,8 +128,9 @@ function handlePostback(sender_psid, received_postback) {
     // Set the response based on the postback payload
     if (payload === 'Get Started') {
         response = {"text": "Auth Perfume Shop xin chào quý khách !"}
-    }
-    if (payload === 'yes') {
+    }else if (payload === 'Bắt Đầu') {
+        response = {"text": "Auth Perfume Shop xin chào quý khách !"}
+    }else if (payload === 'yes') {
       response = { "text": "Thanks!" }
     } else if (payload === 'no') {
       response = { "text": "Oops, try sending another image." }
