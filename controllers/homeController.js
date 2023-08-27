@@ -105,8 +105,7 @@ async function handlePostback(sender_psid, received_postback) {
     // Set the response based on the postback payload
     if (payload === 'Bắt Đầu') {
         let response_1 = {"text": "Auth Perfume Shop xin chào quý khách !"};
-        let body_1 = await callSendAPI(sender_psid, response_1);
-        console.log(body_1);
+        callSendAPI(sender_psid, response_1);
 
         let response_2 = {
             "attachment":{
@@ -139,8 +138,7 @@ async function handlePostback(sender_psid, received_postback) {
                 }
             }
         }
-        let body_2 = await callSendAPI(sender_psid, response_2);
-        console.log(body_2);
+        callSendAPI(sender_psid, response_2);
     }
     // Send the message to acknowledge the postback
 };
@@ -154,22 +152,17 @@ function callSendAPI(sender_psid, response) {
         },
         "message": response
     }
-    return new Promise((resolve, reject) => {
-        // Send the HTTP request to the Messenger Platform
-        request({
-            "uri": "https://graph.facebook.com/v2.6/me/messages",
-            "qs": { "access_token": process.env.ACCESS_TOKEN },
-            "method": "POST",
-            "json": request_body
-        }, (err, res, body) => {
-            if (!err) {
-                console.log("resolve successfully !");
-                resolve(body);
-            } else {
-                reject(err);
-            }
-        }); 
-        
-    })
-
+    // Send the HTTP request to the Messenger Platform
+    request({
+        "uri": "https://graph.facebook.com/v2.6/me/messages",
+        "qs": { "access_token": process.env.ACCESS_TOKEN },
+        "method": "POST",
+        "json": request_body
+    }, (err, res, body) => {
+        if (!err) {
+            console.log("sent message successfully !");
+        } else {
+            console.log(err);
+        }
+    }); 
 }
