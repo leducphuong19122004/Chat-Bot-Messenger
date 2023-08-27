@@ -59,24 +59,24 @@ export let postWebhook = (req, res) => {
 }
 
 export let settingGetstartedButton = async(req, res) => {
-    // let request_body = {
-    //     "get_started": {"payload": "Bắt Đầu"},
-    //     "whitelisted_domains": ["https://chat-bot-messenger.vercel.app/"]
-    // }
-    // request({
-    //     "uri": `https://graph.facebook.com/v17.0/me/messenger_profile?access_token=${process.env.ACCESS_TOKEN}`,
-    //     "qs": { "access_token": process.env.ACCESS_TOKEN },
-    //     "method": "POST",
-    //     "json": request_body
-    // }, (err, res, body) => {
-    //     console.log(body);
-    //     if (!err) {
-    //         console.log("setting successfully !!");
-    //     } else {
-    //         console.error("Unable to send message:" + err);
-    //     }
-    // }); 
-    // // Send the response after the webhook request is resolved
+    let request_body = {
+        "get_started": {"payload": "Bắt Đầu"},
+        "whitelisted_domains": ["https://chat-bot-messenger.vercel.app/"]
+    }
+    request({
+        "uri": `https://graph.facebook.com/v17.0/me/messenger_profile?access_token=${process.env.ACCESS_TOKEN}`,
+        "qs": { "access_token": process.env.ACCESS_TOKEN },
+        "method": "POST",
+        "json": request_body
+    }, (err, res, body) => {
+        console.log(body);
+        if (!err) {
+            console.log("setting successfully !!");
+        } else {
+            console.error("Unable to send message:" + err);
+        }
+    }); 
+    // Send the response after the webhook request is resolved
     res.status(200).send("setting successfully !!!");
 }
 // Handles messages events
