@@ -161,7 +161,7 @@ function callSendAPI(sender_psid, response) {
             "json": request_body
         }, (err, res, body) => {
             if (!err) {
-                resolve(console.log("message sent successfully !"))
+                resolve();
             } else {
                 reject(err);
             }
