@@ -163,6 +163,7 @@ function callSendAPI(sender_psid, response) {
             "json": request_body
         }, (err, res, body) => {
             if (!err) {
+                console.log("resolve successfully !");
                 resolve(body);
             } else {
                 reject(err);
