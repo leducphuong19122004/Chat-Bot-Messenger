@@ -105,7 +105,8 @@ async function handlePostback(sender_psid, received_postback) {
     // Set the response based on the postback payload
     if (payload === 'Bắt Đầu') {
         let response_1 = {"text": "Auth Perfume Shop xin chào quý khách !"};
-        await callSendAPI(sender_psid, response_1);
+        let body_1 = await callSendAPI(sender_psid, response_1);
+        console.log(body_1);
 
         let response_2 = {
             "attachment":{
@@ -138,7 +139,8 @@ async function handlePostback(sender_psid, received_postback) {
                 }
             }
         }
-        await callSendAPI(sender_psid, response_2);
+        let body_2 = await callSendAPI(sender_psid, response_2);
+        console.log(body_2);
     }
     // Send the message to acknowledge the postback
 };
@@ -161,7 +163,7 @@ function callSendAPI(sender_psid, response) {
             "json": request_body
         }, (err, res, body) => {
             if (!err) {
-                resolve();
+                resolve(body);
             } else {
                 reject(err);
             }
