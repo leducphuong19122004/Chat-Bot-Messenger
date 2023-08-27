@@ -58,13 +58,13 @@ export let postWebhook = (req, res) => {
   }
 }
 
-export let settingGetstartedButton = (req, res) => {
+export let settingGetstartedButton = async(req, res) => {
     console.log("hello from setting get started button");
     let request_body = {
         "get_started": {"payload": "Bắt Đầu"},
         "whitelisted_domains": ["https://chat-bot-messenger.vercel.app/"]
     }
-    request({
+    await request({
         "uri": `https://graph.facebook.com/v17.0/me/messenger_profile?access_token=${process.env.ACCESS_TOKEN}`,
         "qs": { "access_token": process.env.ACCESS_TOKEN },
         "method": "POST",
@@ -72,11 +72,12 @@ export let settingGetstartedButton = (req, res) => {
     }, (err, res, body) => {
         console.log(body);
         if (!err) {
-            res.send("setting successfully !")
+            console.log("setting successfully !");
         } else {
             console.error("Unable to send message:" + err);
         }
     }); 
+    res.send("setting successfully !");
 }
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
