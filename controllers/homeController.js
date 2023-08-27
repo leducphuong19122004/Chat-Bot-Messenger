@@ -62,7 +62,7 @@ export let settingGetstartedButton = async(req, res) => {
         const pageAccessToken = process.env.ACCESS_TOKEN; // Replace with your actual Page Access Token
         
         const request_body = {
-          get_started: { payload: 'Bắt Đầu' }
+          get_started: { payload: 'Get Started' }
         };
         
         const response = await axios.post(
@@ -126,7 +126,7 @@ function handlePostback(sender_psid, received_postback) {
     // Get the payload for the postback
     let payload = received_postback.payload;
     // Set the response based on the postback payload
-    if (payload === 'Bắt Đầu') {
+    if (payload === 'Get Started') {
         response = {"text": "Auth Perfume Shop xin chào quý khách !"}
     }
     if (payload === 'yes') {
