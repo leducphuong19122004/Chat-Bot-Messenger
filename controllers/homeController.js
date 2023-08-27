@@ -28,12 +28,10 @@ export let getHomePage = (req, res) => {
 }
 
 export let postWebhook = (req, res) => {
-    // Parse the request body from the POST
+  // Parse the request body from the POST
   let body = req.body;
-
   // Check the webhook event is from a Page subscription
   if (body.object === 'page') {
-
     // Iterate over each entry - there may be multiple if batched
     body.entry.forEach(function(entry) {
         // Gets the body of the webhook event
@@ -64,7 +62,7 @@ export let settingGetstartedButton = async(req, res) => {
         const pageAccessToken = process.env.ACCESS_TOKEN; // Replace with your actual Page Access Token
         
         const request_body = {
-          get_started: { payload: 'Get Started' }
+          get_started: { payload: 'Bắt Đầu' }
         };
         
         const response = await axios.post(
@@ -73,10 +71,10 @@ export let settingGetstartedButton = async(req, res) => {
         );
         
         console.log(response.data);
-        res.status(200).send('Get Started Button Set Up Successfully');
+            res.status(200).send('Get Started Button Set Up Successfully');
       } catch (error) {
-        console.error('Error setting up Get Started button:', error);
-        res.status(500).send('Internal Server Error');
+            console.error('Error setting up Get Started button:', error);
+            res.status(500).send('Internal Server Error');
       }
 }
 // Handles messages events
@@ -128,6 +126,9 @@ function handlePostback(sender_psid, received_postback) {
     // Get the payload for the postback
     let payload = received_postback.payload;
     // Set the response based on the postback payload
+    if (payload === 'Bắt Đầu') {
+        response = {"text": "Auth Perfume Shop xin chào quý khách !"}
+    }
     if (payload === 'yes') {
       response = { "text": "Thanks!" }
     } else if (payload === 'no') {
