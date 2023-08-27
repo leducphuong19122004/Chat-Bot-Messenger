@@ -114,9 +114,9 @@ async function handlePostback(sender_psid, received_postback) {
                 "template_type":"generic",
                 "elements":[
                     {
-                    "title":"Welcome!",
-                    "image_url":"https://raw.githubusercontent.com/fbsamples/original-coast-clothing/main/public/styles/male-work.jpg",
-                    "subtitle":"We have the right hat for everyone.",
+                    "title":"Giới thiệu sản phẩm",
+                    "image_url":"https://github.com/leducphuong19122004/Chat-Bot-Messenger/blob/master/image%20product/339744864_873563313706097_6438786656393540549_n.jpg?raw=true",
+                    "subtitle":"Allure Homme Sport - Giá: 389k",
                     "default_action": {
                         "type": "web_url",
                         "url": "https://www.originalcoastclothing.com/",
