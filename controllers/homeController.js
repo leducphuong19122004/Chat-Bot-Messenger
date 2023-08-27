@@ -59,6 +59,7 @@ export let postWebhook = (req, res) => {
 }
 
 export let settingGetstartedButton = (req, res) => {
+    console.log("hello from setting get started button");
     let request_body = {
         "get_started": {"payload": "Bắt Đầu"}
     }
