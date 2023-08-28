@@ -107,17 +107,19 @@ async function handlePostback(sender_psid, received_postback) {
     if (payload === 'Bắt Đầu') {
         let response_1 = {"text": "Auth Perfume Shop xin chào quý khách !"};
         callSendAPI(sender_psid, response_1);
+        let response_2 = {"text": "Shop xin phép được giới thiệu các dòng sản phẩm nước hoa (chiết 10ml) mà shop đang kinh doanh ạ !"};
+        callSendAPI(sender_psid, response_2);
 
-        let response_2 = {
+        let response_3 = {
             "attachment":{
                 "type":"template",
                 "payload":{
                 "template_type":"generic",
                 "elements":[
                     {
-                    "title":"Giới thiệu sản phẩm",
+                    "title":"Allure Homme Sport",
                     "image_url":"https://github.com/leducphuong19122004/Chat-Bot-Messenger/blob/master/image%20product/339744864_873563313706097_6438786656393540549_n.jpg?raw=true",
-                    "subtitle":"Allure Homme Sport - Giá: 389k",
+                    "subtitle":"Allure Homme Sport có mùi hương thế thao sảng khoái. Giá dành cho lọ chiết 10ml chỉ có 389k",
                     "default_action": {
                         "type": "web_url",
                         "url": "https://www.originalcoastclothing.com/",
@@ -130,16 +132,100 @@ async function handlePostback(sender_psid, received_postback) {
                         "title":"View Website"
                         },{
                         "type":"postback",
-                        "title":"Start Chatting",
-                        "payload":"DEVELOPER_DEFINED_PAYLOAD"
+                        "title":"Mua Ngay",
+                        "payload":"Allure Homme Sport"
                         }              
                     ]      
+                    },
+                    {
+                        "title":"Replica Sunday Lazy Morning",
+                        "image_url":"https://github.com/leducphuong19122004/Chat-Bot-Messenger/blob/master/image%20product/361851670_234014122912064_2053498349774634806_n.jpg?raw=true",
+                        "subtitle":"Replica Sunday Lazy Morning có mùi hương nhẹ nhàng, thư thái như những tia nắng đầu tiên chiếu vào căn phòng. Giá dành cho lọ chiểt 10ml chỉ có 309k.",
+                        "default_action": {
+                            "type": "web_url",
+                            "url": "https://www.originalcoastclothing.com/",
+                            "webview_height_ratio": "tall"
+                        },
+                        "buttons":[
+                            {
+                            "type":"web_url",
+                            "url":"https://www.originalcoastclothing.com/",
+                            "title":"View Website"
+                            },{
+                            "type":"postback",
+                            "title":"Mua Ngay",
+                            "payload":"Replica Sunday Lazy Morning"
+                            }              
+                        ]      
+                    },
+                    {
+                        "title":"Aqua di Giò (giò trắng)",
+                        "image_url":"https://github.com/leducphuong19122004/Chat-Bot-Messenger/blob/master/image%20product/340995575_152940491054615_6413215964939907130_n.jpg?raw=true",
+                        "subtitle":"Chỉ cần nhìn Giò trắng, bạn cảm nhận được hương cam chanh dễ chịu, hòa quyện cùng hương nước sảng khoái và hoa nhẹ nhàng. Giá dành cho lọ chiết 10ml chỉ có 209k.",
+                        "default_action": {
+                            "type": "web_url",
+                            "url": "https://www.originalcoastclothing.com/",
+                            "webview_height_ratio": "tall"
+                        },
+                        "buttons":[
+                            {
+                            "type":"web_url",
+                            "url":"https://www.originalcoastclothing.com/",
+                            "title":"View Website"
+                            },{
+                            "type":"postback",
+                            "title":"Mua Ngay",
+                            "payload":"Aqua di Giò (giò trắng)"
+                            }              
+                        ]      
+                    },
+                    {
+                        "title":"9PM",
+                        "image_url":"https://github.com/leducphuong19122004/Chat-Bot-Messenger/blob/master/image%20product/361931014_827126525591849_4484168111083657093_n.jpg?raw=true",
+                        "subtitle":"Afnan 9pm là chai nước hoa nam quyến rũ giúp anh em trở nên mạnh mẽ, nồng nàn hơn mỗi khi màn đêm buông xuống. Giá dành cho lọ chiết 10ml chỉ có 99k.",
+                        "default_action": {
+                            "type": "web_url",
+                            "url": "https://www.originalcoastclothing.com/",
+                            "webview_height_ratio": "tall"
+                        },
+                        "buttons":[
+                            {
+                            "type":"web_url",
+                            "url":"https://www.originalcoastclothing.com/",
+                            "title":"View Website"
+                            },{
+                            "type":"postback",
+                            "title":"Mua Ngay",
+                            "payload":"9PM"
+                            }              
+                        ]      
+                    },
+                    {
+                        "title":"Narciso trắng",
+                        "image_url":"https://github.com/leducphuong19122004/Chat-Bot-Messenger/blob/master/image%20product/362093250_609687084600094_6154365417199498798_n.jpg?raw=true",
+                        "subtitle":"Narciso trắng dịu dàng nhưng mạnh mẽ, ôm trọn cơ thể và gợi cảm xúc cho người đối diện. Giá dành cho lọ chiết 10ml chỉ có 239k.",
+                        "default_action": {
+                            "type": "web_url",
+                            "url": "https://www.originalcoastclothing.com/",
+                            "webview_height_ratio": "tall"
+                        },
+                        "buttons":[
+                            {
+                            "type":"web_url",
+                            "url":"https://www.originalcoastclothing.com/",
+                            "title":"View Website"
+                            },{
+                            "type":"postback",
+                            "title":"Mua Ngay",
+                            "payload":"Narciso trắng"
+                            }              
+                        ]      
                     }
                 ]
                 }
             }
         }
-        callSendAPI(sender_psid, response_2);
+        callSendAPI(sender_psid, response_3);
     }
     // Send the message to acknowledge the postback
 };
