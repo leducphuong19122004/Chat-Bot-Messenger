@@ -45,7 +45,6 @@ export let postWebhook = (req, res) => {
         if (webhook_event.message) {
            handleMessage(sender_psid, webhook_event.message);        
         } else if (webhook_event.postback) {
-            console.log('run into handlePostback');
            handlePostback(sender_psid, webhook_event.postback);
         }
       });
@@ -80,23 +79,13 @@ export let settingGetstartedButton = async(req, res) => {
 }
 // Handles messages events
 function handleMessage(sender_psid, received_message) {
-  let response;
-  // Checks if the message contains text
-  if (received_message.text) {
-    // Creates the payload for a basic text message, which
     // will be added to the body of our request to the Send API
-    response = {
-      "text": `You sent the message: "${received_message.text}". Now send me an attachment!`
-    }
-  } else if (received_message.attachments) {
-    // Gets the URL of the message attachment
-    let attachment_url = received_message.attachments[0].payload.url;
-    response = {
-        }
+    let response = {
+      "text": "Quý khách vui lòng chờ trong giây lát Shop sẽ phản hồi lại."
     }
     // Sends the response message
     callSendAPI(sender_psid, response); 
-  } 
+} 
 
 
 // Handles messaging_postbacks events
@@ -230,8 +219,7 @@ async function handlePostback(sender_psid, received_postback) {
         callSendAPI(sender_psid, response_3);
     }
     if(title === "Mua Ngay") {
-        console.log("Mua Ngay");
-        let response_4 = {"text": `Có phải anh/chị muốn đặt mua lọ ${payload} phải không ạ ? Nếu vậy anh/chị vui lòng để lại họ tên, số điện thoại, địa chỉ để Shop lên đơn ship cho anh/chị nhé !`};
+        let response_4 = {"text": `Có phải anh/chị muốn đặt mua lọ "${payload}" phải không ạ ? Nếu vậy anh/chị vui lòng để lại họ tên, số điện thoại, địa chỉ để Shop lên đơn ship cho anh/chị nhé !`};
         callSendAPI(sender_psid, response_4);
     }
 };
