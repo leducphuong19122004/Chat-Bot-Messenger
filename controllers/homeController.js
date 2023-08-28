@@ -103,6 +103,7 @@ function handleMessage(sender_psid, received_message) {
 async function handlePostback(sender_psid, received_postback) {
     // Get the payload for the postback
     let payload = received_postback.payload;
+    let title = received_postback.title;
     // Set the response based on the postback payload
     if (payload === 'Bắt Đầu') {
         let response_1 = {"text": "Auth Perfume Shop xin chào quý khách !"};
@@ -122,15 +123,11 @@ async function handlePostback(sender_psid, received_postback) {
                     "subtitle":"Allure Homme Sport có mùi hương thế thao sảng khoái. Giá dành cho lọ chiết 10ml chỉ có 389k",
                     "default_action": {
                         "type": "web_url",
-                        "url": "https://www.originalcoastclothing.com/",
+                        "url": "https://www.facebook.com/permalink.php?story_fbid=pfbid02Hqf2waVcihHgifmbSbQG5vTwbyu45Ko472iK6eZ4VXExrthjdRrZfzvU5TGJJMPDl&id=61550792994905",
                         "webview_height_ratio": "tall"
                     },
                     "buttons":[
-                        {
-                        "type":"web_url",
-                        "url":"https://www.originalcoastclothing.com/",
-                        "title":"View Website"
-                        },{
+                       {
                         "type":"postback",
                         "title":"Mua Ngay",
                         "payload":"Allure Homme Sport"
@@ -227,7 +224,10 @@ async function handlePostback(sender_psid, received_postback) {
         }
         callSendAPI(sender_psid, response_3);
     }
-    // Send the message to acknowledge the postback
+    if(title === "Mua Ngay") {
+        let response_4 = {"text": `Có phải anh/chị muốn đặt mua lọ ${payload} phải không ạ ? Nếu vậy anh/chị vui lòng để lại họ tên, số điện thoại, địa chỉ để Shop lên đơn ship cho anh/chị nhé !`};
+        callSendAPI(sender_psid, response_4);
+    }
 };
 
 // Sends response messages via the Send API
