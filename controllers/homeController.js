@@ -106,41 +106,40 @@ async function handlePostback(sender_psid, received_postback) {
     // Set the response based on the postback payload
     if (payload === 'Bắt Đầu') {
         let response_1 = {"text": "Auth Perfume Shop xin chào quý khách !"};
-        console.log("callSendAPI");
         callSendAPI(sender_psid, response_1);
 
-        // let response_2 = {
-        //     "attachment":{
-        //         "type":"template",
-        //         "payload":{
-        //         "template_type":"generic",
-        //         "elements":[
-        //             {
-        //             "title":"Giới thiệu sản phẩm",
-        //             "image_url":"https://github.com/leducphuong19122004/Chat-Bot-Messenger/blob/master/image%20product/339744864_873563313706097_6438786656393540549_n.jpg?raw=true",
-        //             "subtitle":"Allure Homme Sport - Giá: 389k",
-        //             "default_action": {
-        //                 "type": "web_url",
-        //                 "url": "https://www.originalcoastclothing.com/",
-        //                 "webview_height_ratio": "tall"
-        //             },
-        //             "buttons":[
-        //                 {
-        //                 "type":"web_url",
-        //                 "url":"https://www.originalcoastclothing.com/",
-        //                 "title":"View Website"
-        //                 },{
-        //                 "type":"postback",
-        //                 "title":"Start Chatting",
-        //                 "payload":"DEVELOPER_DEFINED_PAYLOAD"
-        //                 }              
-        //             ]      
-        //             }
-        //         ]
-        //         }
-        //     }
-        // }
-        // callSendAPI(sender_psid, response_2);
+        let response_2 = {
+            "attachment":{
+                "type":"template",
+                "payload":{
+                "template_type":"generic",
+                "elements":[
+                    {
+                    "title":"Giới thiệu sản phẩm",
+                    "image_url":"https://github.com/leducphuong19122004/Chat-Bot-Messenger/blob/master/image%20product/339744864_873563313706097_6438786656393540549_n.jpg?raw=true",
+                    "subtitle":"Allure Homme Sport - Giá: 389k",
+                    "default_action": {
+                        "type": "web_url",
+                        "url": "https://www.originalcoastclothing.com/",
+                        "webview_height_ratio": "tall"
+                    },
+                    "buttons":[
+                        {
+                        "type":"web_url",
+                        "url":"https://www.originalcoastclothing.com/",
+                        "title":"View Website"
+                        },{
+                        "type":"postback",
+                        "title":"Start Chatting",
+                        "payload":"DEVELOPER_DEFINED_PAYLOAD"
+                        }              
+                    ]      
+                    }
+                ]
+                }
+            }
+        }
+        callSendAPI(sender_psid, response_2);
     }
     // Send the message to acknowledge the postback
 };
